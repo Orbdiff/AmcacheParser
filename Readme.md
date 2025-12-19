@@ -6,7 +6,7 @@
 
 ## Features
 
-- **AmCache.hve Parser**: PParses `Amcache.hve` using [Eric Zimmerman's AmcacheParser](https://github.com/EricZimmerman/AmcacheParser).
+- **AmCache.hve Parser**: Parses `Amcache.hve` using [Eric Zimmerman's AmcacheParser](https://github.com/EricZimmerman/AmcacheParser).
 - **Digital Signature Verification**: Identifies whether executables are signed, unsigned, or not found.
 - **Yara Rules**: Includes certain Yara rules to detect possible cheats (may, of course, produce false positives)
 
