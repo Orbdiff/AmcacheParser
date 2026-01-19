@@ -1,15 +1,60 @@
-# AmCacheParser
+﻿# AmCacheParser
 
-**AmcacheParser** is a tool for analyzing a forensic artifact, specifically `Amcache.hve`, it provides file paths, digital signatures, and Yara rules.
+AmCacheParser is a forensic analysis tool designed to parse and analyze the **Amcache.hve** artifact. It offers detailed insights into executed binaries, including file paths, digital signature status, and Yara rule detections, all via an ImGui interface.
 
 ---
 
 ## Features
 
-- **AmCache.hve Parser**: Parses `Amcache.hve` using [Eric Zimmerman's AmcacheParser](https://github.com/EricZimmerman/AmcacheParser).
-- **Digital Signature Verification**: Identifies whether executables are signed, unsigned, or not found.
-- **Yara Rules**: Includes certain Yara rules to detect possible cheats (may, of course, produce false positives)
+### Digital Signature Verification
 
-## TODO
+* Verifies executables and categorizes them as:
 
-- [ ] Add a GUI
+  * **Signed**
+  * **Unsigned**
+  * **Not Found**
+
+### Yara Rules Integration
+
+* Includes a set of YARA rules to detect possible cheats or suspicious PE files.
+* May produce false positives, so results should be manually validated.
+
+### Advanced Filtering (Column-Based Search)
+
+* Filtering system that works across **all visible columns**.
+* Supports column-specific queries using the following syntax:
+
+```
+ColumnName:value;OtherColumn:value
+```
+
+**Examples:**
+
+* `Signature:Signed`
+* `Path:Steam;Signature:Unsigned`
+* `Signature:Cheat;OS:false`
+
+Notes:
+
+* Filtering is **case-insensitive**.
+* Multiple conditions can be combined using `;`.
+* Only visible columns are considered during filtering.
+
+### Quick Filters via Checkboxes
+
+* Instantly narrow results using predefined checkboxes:
+
+  * **Unsigned / Cheat**
+  * **Instance entries only**
+  * **NotFound**
+
+### Extensible Columns
+
+* Right-click the **last column header** to dynamically add more fields:
+
+  * `IsOsComponent`
+  * `LongPathHash`
+  * `BinaryType`
+  * `IsPE`
+
+* Newly added columns are **automatically included** in the global and column-based search system.
